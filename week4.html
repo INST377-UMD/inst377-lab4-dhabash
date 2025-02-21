@@ -1,0 +1,104 @@
+<html>
+ 
+    <title>INST377 Lab 4</title>
+    <link rel="stylesheet" href="week4.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        INST 377 Lab 4
+    </header>
+    
+
+        <!-- Alert Me Section -->
+        <div class="content-box">
+            <h3>Enter Your Name:</h3>
+            <form onsubmit="return alertUser()">
+                <input type="text" id="name" name="name" required>
+                <button type="submit">Alert Me</button>
+            </form>
+        </div>
+
+        <!-- Change Color Section -->
+        <div class="content-box">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+         <!-- Text Tester Section -->
+         <div class="content-box">
+            <h3>Text Tester:</h3>
+            <form onsubmit="return validateText()">
+                <input type="text" id="tester" name="tester" required>
+                <button type="submit">Validate Text</button>
+            </form>
+        </div>
+
+        <!-- Add Text Section -->
+        <div class="content-box">
+            <button onclick="addText()">Add Text</button>
+        </div>
+
+    
+   
+
+    <!-- JavaScript Code -->
+    <script>
+        function alertUser() {
+            let name = document.getElementById("name").value.trim();
+            if (name === "") {
+                alert("Please enter your name!");
+                return false;
+            }
+            alert("Hi " + name + "! What's up!");
+            return false;
+        }
+
+        
+        function changeColor() {
+        console.log(
+        "Attempting to change background color, current color is: ",
+        document.body.style.backgroundColor
+    );
+
+    
+        let currentColor = getComputedStyle(document.body).backgroundColor;
+
+        if (currentColor === "rgb(42, 157, 143)") { 
+            document.body.style.backgroundColor = "#e7c6ff"; 
+        } else {
+            document.body.style.backgroundColor = "#2a9d8f"; 
+        }
+
+        console.log(
+            "Successfully changed background color, new color is: ",
+            document.body.style.backgroundColor
+        );
+}
+
+
+    function validateText() {
+        console.log("Validating user input...");
+
+        // Get the text input value
+        let text = document.getElementById("tester").value;
+
+        // Regular expression to check for special characters
+        var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+        // Check if the input contains special characters
+        if (validation.test(text)) {
+            alert("nah bro!");
+            return false;
+        } else {
+            alert("yeah that works!");
+            return false; 
+        }
+    }
+        function addText() {
+            document.querySelector("header").textContent += "hey";
+        }
+    </script>
+
+</body>
+</html>
